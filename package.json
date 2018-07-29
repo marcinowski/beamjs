@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "serve": "npm run build-ts & vue-cli-service serve",
+    "build": "npm run build-ts & vue-cli-service build",
+    "build-ts": "tsc -w -p tsconfig.json",
+    "build-ts-help": "tsc --help",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
   },
   "dependencies": {
+    "typescript": "^2.9.2",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.19",

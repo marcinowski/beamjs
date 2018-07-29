@@ -9,20 +9,9 @@
       fixed
       app
     >
-      <v-list>
-        <v-list-tile
-          value="true"
-          v-for="(item, i) in items"
-          :key="i"
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+      <side-options
+        v-on:method="onMethod"
+      ></side-options>
     </v-navigation-drawer>
     <v-toolbar
       app
@@ -45,7 +34,7 @@
       </v-btn>
     </v-toolbar>
     <v-content>
-      <router-view/>
+      <draw v-bind:method="method"></draw>
     </v-content>
     <v-navigation-drawer
       temporary
@@ -70,23 +59,27 @@
 </template>
 
 <script>
+import SideOptions from "@/components/SideOptions";
+import Draw from "@/components/Draw";
 
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  data() {
     return {
       clipped: false,
       drawer: true,
       fixed: false,
-      items: [{
-        icon: 'bubble_chart',
-        title: 'Inspire'
-      }],
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'Vuetify.js'
+      title: "Beam",
+      method: this.method
+    };
+  },
+  methods: {
+    onMethod(method) {
+      this.method = method;
     }
   }
-}
+};
 </script>
